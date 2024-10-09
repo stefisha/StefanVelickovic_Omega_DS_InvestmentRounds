@@ -1,0 +1,2 @@
+# StefanVelickovic_Omega_DS_InvestmentRounds
+VegaIT data science task
