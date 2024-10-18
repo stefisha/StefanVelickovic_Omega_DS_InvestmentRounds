@@ -162,7 +162,7 @@ cython_debug/
 #.idea/
 
 # Ignore model and dataset files
-*.pkl
+# *.pkl
 *.csv
 
 # Ignore Docker and IDE config files
