@@ -52,8 +52,18 @@ This project provides an API to predict funding rounds (angel, seed, a, b, c) ba
   ```
 
 - Example using `curl`:
+ To fetch predictions for investment rounds:
   ```bash
-  curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d '{"numEmps": 50, "raisedAmt": 5000000, "fundedYear": 2020}'
+   curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d '{"numEmps": 50, "raisedAmt": 500000, "fundedYear": 2020, "city": "New York", "category": "technology"}'
+  ```
+ To fetch predictions for a series funding:
+  ```bash
+   curl http://localhost:5000/series_a_funding
+  ```
+
+- Windows equivalent:
+ ```powershell
+   Invoke-WebRequest -Uri http://localhost:5000/predict -Method Post -ContentType "application/json" -Body (@{numEmps=50;raisedAmt=500000;fundedYear=2020;city="New York";category="technology"} | ConvertTo-Json)
   ```
 
 ## Docker Instructions
@@ -70,33 +80,12 @@ This project provides an API to predict funding rounds (angel, seed, a, b, c) ba
 
 3. Once the container is running, use the same API call as above to make predictions.
 
-## Git Version Control
-
-- Make sure you use **Git** for version control:
-  ```bash
-  git init
-  git add .
-  git commit -m "Initial commit"
-  ```
-
-  When making updates or changes, use appropriate commit messages:
-  ```bash
-  git add .
-  git commit -m "Implemented Flask API"
-  ```
-
-- Push to a remote repository:
-  ```bash
-  git remote add origin https://github.com/yourusername/ml-api.git
-  git push -u origin main
-  ```
-
 ## Additional Comments
 
-- The model was trained on a dataset with various features like `numEmps`, `raisedAmt`, `fundedYear`, etc. The model type is a **Random Forest Classifier**, and hyperparameter tuning was performed using **RandomizedSearchCV** to improve performance.
+- The model was trained on a dataset with various features like `numEmps`, `raisedAmt`, `fundedYear`, etc. The model type is a **XGBoost**, used with hyperparameter tuning, SMOTE and minmax scaling to improve performance.
 - The project is designed to be easily extendable. If additional features or more complex models are required, they can be added to the pipeline.
-- Future improvements could involve scaling the app to handle higher traffic by deploying it on cloud services such as **AWS** or **Heroku**.
+- Future improvements could involve scaling the app to handle higher traffic by deploying it on cloud services such as **AWS** or **Azure**.
 
 ## Author
 
-[Your Name]
+Stefan Veličković
