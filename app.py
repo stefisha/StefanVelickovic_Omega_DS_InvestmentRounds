@@ -6,10 +6,10 @@ import joblib  # or pickle for loading the model
 app = Flask(__name__)
 
 # Load the pre-trained model
-model = joblib.load('model.pkl')  # Ensure 'model.pkl' contains your trained model
+model = joblib.load('models/model.pkl')  # Ensure 'model.pkl' contains your trained model
 
 # Load the expected columns from your training data (you can save these during training)
-expected_columns = joblib.load('expected_columns.pkl')  # Ensure to save your expected columns during training
+expected_columns = joblib.load('models/expected_columns.pkl')  # Ensure to save your expected columns during training
 
 # Define a route to make predictions
 @app.route('/predict', methods=['POST'])
